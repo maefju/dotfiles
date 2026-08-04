@@ -1,4 +1,3 @@
-import Quickshell
 import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Layouts
@@ -19,15 +18,6 @@ RowLayout {
     // added or removed.
     property var navButtons: []
 
-    // The monitor this module instance is displayed on, derived from its own
-    // containing window (via the QsWindow attached property) rather than
-    // whichever monitor currently has Hyprland's focus. This is what lets two
-    // instances - one per StatusbarWindow on each monitor - each show only
-    // their own monitor's workspaces (split-monitor-workspaces gives each
-    // monitor its own contiguous workspace id range).
-    readonly property var ownScreen: QsWindow.window ? QsWindow.window.screen : null
-    readonly property HyprlandMonitor activeMonitor: wsRoot.ownScreen ? Hyprland.monitorFor(wsRoot.ownScreen) : null
-
     function rebuildNavButtons(): void {
         let a = []
         for (let i = 0; i < rep.count; i++)
@@ -35,50 +25,27 @@ RowLayout {
         wsRoot.navButtons = a
     }
 
-    // Only the workspaces that live on activeMonitor.
-    readonly property var monitorWorkspaces: {
-        const list = Hyprland.workspaces.values
-        let mine = []
-        for (let i = 0; i < list.length; i++)
-            if (wsRoot.activeMonitor && list[i].monitor && list[i].monitor.id === wsRoot.activeMonitor.id)
-                mine.push(list[i])
-        return mine
-    }
-
-    // The workspace ids to render: the active monitor's lowest existing id..N,
-    // where N covers at least minWorkspaces ids and extends to cover the
-    // highest-numbered workspace that currently exists on that monitor. Falls
-    // back to 1..minWorkspaces before any workspace data is available.
+    // The workspace ids to render: 1..N, where N is at least minWorkspaces and
+    // extends to cover the highest-numbered workspace that currently exists.
     readonly property var workspaceIds: {
-        const mine = wsRoot.monitorWorkspaces
-        let minId = 1
         let maxId = Math.max(1, wsRoot.minWorkspaces)
-        if (mine.length > 0) {
-            minId = mine[0].id
-            maxId = mine[0].id
-            for (let i = 1; i < mine.length; i++) {
-                if (mine[i].id < minId)
-                    minId = mine[i].id
-                if (mine[i].id > maxId)
-                    maxId = mine[i].id
-            }
-            if (maxId - minId + 1 < wsRoot.minWorkspaces)
-                maxId = minId + wsRoot.minWorkspaces - 1
-        }
+        const list = Hyprland.workspaces.values
+        for (let i = 0; i < list.length; i++)
+            if (list[i].id > maxId)
+                maxId = list[i].id
         let ids = []
-        for (let id = minId; id <= maxId; id++)
+        for (let id = 1; id <= maxId; id++)
             ids.push(id)
         return ids
     }
 
-    // The live Hyprland workspace for an id on the active monitor, or null
-    // when it is empty (Hyprland only tracks workspaces that hold windows or
-    // are focused).
+    // The live Hyprland workspace for an id, or null when it is empty (Hyprland
+    // only tracks workspaces that hold windows or are focused).
     function workspaceById(id: int): var {
-        const mine = wsRoot.monitorWorkspaces
-        for (let i = 0; i < mine.length; i++)
-            if (mine[i].id === id)
-                return mine[i]
+        const list = Hyprland.workspaces.values
+        for (let i = 0; i < list.length; i++)
+            if (list[i].id === id)
+                return list[i]
         return null
     }
 
@@ -96,9 +63,8 @@ RowLayout {
             property bool focused: false
 
             // Whether this workspace is the currently focused one.
-            readonly property bool isActive: wsRoot.activeMonitor
-                && wsRoot.activeMonitor.activeWorkspace
-                && wsRoot.activeMonitor.activeWorkspace.id === ws.modelData
+            readonly property bool isActive: Hyprland.focusedWorkspace
+                && Hyprland.focusedWorkspace.id === ws.modelData
             // Whether the workspace currently holds windows (exists in Hyprland).
             readonly property bool occupied: wsRoot.workspaceById(ws.modelData) !== null
 

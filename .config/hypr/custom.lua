@@ -26,3 +26,10 @@ hl.bind(mainMod .. " + CTRL + 2", hl.dsp.focus({ monitor = 1 }))
 hl.bind(mainMod .. " + CTRL + 3", hl.dsp.focus({ monitor = 2 }))
 hl.bind(mainMod .. " + CTRL + 4", hl.dsp.focus({ monitor = 3 }))
 hl.bind(mainMod .. " + CTRL + 5", hl.dsp.focus({ monitor = 4 }))
+
+
+hl.config({
+    quirks = {
+        prefer_hdr = true
+    }
+})
