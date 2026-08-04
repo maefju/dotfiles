@@ -1,0 +1,37 @@
+{
+  // General Settings
+  // Position TOP
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "spacing": 0,
+  "height": 30,
+
+  // Load Modules
+  "include": ["~/.config/waybar/themes/maefju/modules.json"],
+
+  // Modules Left
+  "modules-left": [
+    "custom/appmenu", 
+    "clock",
+    "tray"
+  ],
+
+  // Modules Center
+  "modules-center": [ "hyprland/workspaces"],
+
+  // Modules Right
+  "modules-right": [
+    "custom/updates",
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "cpu",
+    "memory",
+    "gpu",
+    "custom/cliphist",
+    "custom/hypridle",   
+    "custom/settings",
+    "custom/exit"
+  ]
+}
