@@ -1,14 +1,13 @@
-*.tar
-*.tar.*
-*.jar
-*.exe
-*.msi
-*.deb
-*.zip
-*.tgz
-*.log
-*.log.*
-*.sig
+# OS junk
+.DS_Store
+Thumbs.db
 
-pkg/
-src/
+# Editor / IDE
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Hyprland .conf -> .lua conversion staging artifacts
+*.lua.hyprland-config-converting

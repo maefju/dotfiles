@@ -1,2 +1,2 @@
-local name = "default.lua"
-load_variant(name,"decorations")
+local name = "decorations-maefju.lua"
+load_variant(name, "decorations")

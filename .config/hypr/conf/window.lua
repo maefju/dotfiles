@@ -1,2 +1,2 @@
-local name = "default.lua"
-load_variant(name,"windows")
+local name = "windows-maefju.lua"
+load_variant(name, "windows")

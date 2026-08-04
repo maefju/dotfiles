@@ -53,4 +53,7 @@ hl.on("hyprland.start", function ()
 
     -- Start autostart cleanup
     hl.exec_cmd("~/.config/hypr/scripts/cleanup.sh")
+
+    hl.exec_cmd("hyprpm reload -n")
+    hl.exec_cmd("powerprofilesctl set performance")
 end)
