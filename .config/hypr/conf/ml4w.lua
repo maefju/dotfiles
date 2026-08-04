@@ -185,7 +185,7 @@ hl.env("XDG_SESSION_TYPE", "wayland")
 hl.env("XDG_SESSION_DESKTOP", "Hyprland")
 
 -- GDK
-hl.env("GDK_SCALE", "1")
+hl.env("GDK_SCALE", "1.75")
 
 -- Toolkit Backend
 hl.env("GDK_BACKEND", "wayland,x11,*")
