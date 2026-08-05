@@ -3,7 +3,7 @@ Default configuration file for the Quickshell Statusbar.
 */
 {
     "bar": {
-        "height": 40,
+        "height": 108,
         "reservedHeight": 72,
         "enabled": false,
         "alwaysExpanded": false

@@ -25,5 +25,11 @@ ShellRoot {
     SidebarWindow {}
     CalendarWindow {}
     WallpaperWindow {}
-    StatusbarWindow {}
+    // One StatusbarWindow per connected screen, so the bar shows
+    // simultaneously on every monitor. Shared state (settings, the
+    // "statusbar" IpcHandler) lives in StatusbarState, not per instance.
+    Variants {
+        model: Quickshell.screens
+        StatusbarWindow {}
+    }
 }
