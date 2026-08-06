@@ -1,15 +1,14 @@
 --    __  _____  _____      __  ____  ____
 --   /  |/  / / / / / | /| / / / __ \/ __/
---  / /|_/ / /_/_  _/ |/ |/ / / /_/ /\ \  
+--  / /|_/ / /_/_  _/ |/ |/ / / /_/ /\ \
 -- /_/  /_/____//_/ |__/|__/  \____/___/
---   
+--
 -- Advanced configuration for Hyprland
 
 -- FUNCTIONS
 require("functions")
 
 -- MONITORS
-require("conf.monitor")
 require("monitors")
 
 -- INPUT
@@ -25,6 +24,7 @@ require("conf.autostart")
 require("colors")
 
 -- CONFIGURATION
+require("conf.monitor")
 require("conf.environment")
 require("conf.window")
 require("conf.decoration")
