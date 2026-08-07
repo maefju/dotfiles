@@ -14,15 +14,28 @@ hl.window_rule({
 
 -- Gaming
 local gamingApps = "^(steam_app.*|gamescope)$"
-local gamingWorkspace = "name:gaming"
+local gamingWorkspace = "1"
 
 hl.window_rule({ match = { content = "game" }, workspace = gamingWorkspace })
-hl.window_rule({ match = { xdg_tag = "^(.*game.*)$" }, workspace = gamingWorkspace, fullscreen_state = 2, content = "game", sync_fullscreen = true })
+hl.window_rule({
+    match = { xdg_tag = "^(.*game.*)$" },
+    workspace = gamingWorkspace,
+    fullscreen_state = 2,
+    content =
+    "game",
+    sync_fullscreen = true
+})
 hl.window_rule({ match = { class = gamingApps }, workspace = gamingWorkspace })
 hl.window_rule({ match = { class = "^(steam)$", title = "^(Friends List)$" }, float = true })
-hl.window_rule({ match = { class = "^(steam)$", title = "^(Launching\\.{3})$" }, float = true, center = true, workspace = gamingWorkspace })
 hl.window_rule({
-    match = {
+    match = { class = "^(steam)$", title = "^(Launching\\.{3})$" },
+    float = true,
+    center = true,
+    workspace =
+        gamingWorkspace
+})
+hl.window_rule({
+    match            = {
         class         = gamingApps,
         title         = "^(.+)$",
         initial_title = "negative:^(.*\\\\home\\\\.*)$",
@@ -34,7 +47,7 @@ hl.window_rule({
     sync_fullscreen  = true,
 })
 hl.window_rule({
-    match = {
+    match            = {
         class         = "^(steam_app.*)$",
         initial_title = "^$",
     },
@@ -57,13 +70,14 @@ hl.window_rule({ match = { class = "^(dev\\.)?(noctalia\\.Noctalia(\\.Settings)?
 hl.window_rule({
     match = {
         class = "^(org\\.kde\\.dolphin)$",
-        title = "negative:^(Moving.*|Create New.*|Extract.*|Compress.*|Copying.*|Progress.*|Configure.*|Properties.*|Choose\\sApplication.*)$",
+        title =
+        "negative:^(Moving.*|Create New.*|Extract.*|Compress.*|Copying.*|Progress.*|Configure.*|Properties.*|Choose\\sApplication.*)$",
     },
     float = true,
     size = { "max(monitor_w, monitor_h)*0.50", "min(monitor_w, monitor_h)*0.55" },
     move = {
         "max(20, min(cursor_x - (window_w*0.50), monitor_w - window_w + 20))", -- X axis clamping
-        "max(20, min(cursor_y - 50, monitor_h - window_h + 20))" -- Y axis clamping
+        "max(20, min(cursor_y - 50, monitor_h - window_h + 20))"               -- Y axis clamping
     },
 })
 
@@ -72,7 +86,11 @@ local terminals = "^(kitty|ghostty|[Kk]onsole|Alacritty|gnome-terminal|xfce[0-9]
 
 hl.window_rule({ match = { class = "^(firefox|zen)$" }, opacity = "1.0 override" })
 hl.window_rule({ match = { class = terminals }, opacity = "1.0 override" }) -- Override opacity in favor of terminal settings for opacity. If your terminal doesn't support transparency, you can remove this rule.
-hl.window_rule({ match = { class = "^(mpv|org.kde.haruna|.*plex.*|org\\.kde\\.gwenview|.*vlc.*)$" }, opacity = "1.0 override" })
+hl.window_rule({
+    match = { class = "^(mpv|org.kde.haruna|.*plex.*|org\\.kde\\.gwenview|.*vlc.*)$" },
+    opacity =
+    "1.0 override"
+})
 
 -- Float Utility Windows
 local floatApps = {
@@ -90,21 +108,21 @@ local modalMatches = {
     { title = "^(File Upload|Choose wallpaper|Library)(.*)$" },
     { class = "^(.*dialog.*)$" },
     { title = "^(.*dialog.*)$" },
-    { class = "^(hyprland-share-picker)$"},
+    { class = "^(hyprland-share-picker)$" },
 }
 for _, m in ipairs(modalMatches) do hl.window_rule({ match = m, float = true }) end
 
 -- Ignore maximize requests from all apps. You'll probably like this.
 hl.window_rule({
-    name  = "suppress-maximize-events",
-    match = { class = ".*" },
+    name           = "suppress-maximize-events",
+    match          = { class = ".*" },
     suppress_event = "maximize",
 })
 
 -- Fix some dragging issues with XWayland
 hl.window_rule({
-    name  = "fix-xwayland-drags",
-    match = {
+    name     = "fix-xwayland-drags",
+    match    = {
         class      = "^$",
         title      = "^$",
         xwayland   = true,

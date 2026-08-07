@@ -4,7 +4,7 @@ local smw = require("plugins.split-monitor-workspaces")
 
 smw.setup({
     workspace_count = 5, -- This will create 5 persistent workspaces on each monitor at startup
-    monitor_priority = { "DP-1", "DP-2" },
+    monitor_priority = { PRIMARY_MONITOR, MONITOR2 },
     keep_focused = true, -- Keep the currently focused workspace when the config is reloaded
 })
 
@@ -21,8 +21,6 @@ end
 
 
 hl.bind(mainMod .. " + SHIFT + G", smw.grab_rogue_windows())
-hl.bind(mainMod .. " + CTRL + 1", hl.dsp.focus({ monitor = 0 }))
-hl.bind(mainMod .. " + CTRL + 2", hl.dsp.focus({ monitor = 1 }))
-hl.bind(mainMod .. " + CTRL + 3", hl.dsp.focus({ monitor = 2 }))
-hl.bind(mainMod .. " + CTRL + 4", hl.dsp.focus({ monitor = 3 }))
-hl.bind(mainMod .. " + CTRL + 5", hl.dsp.focus({ monitor = 4 }))
+hl.bind(mainMod .. " + CTRL + 1", hl.dsp.focus({ monitor = PRIMARY_MONITOR }))
+hl.bind(mainMod .. " + CTRL + 2", hl.dsp.focus({ monitor = MONITOR2 }))
+hl.bind(mainMod .. " + CTRL + 3", hl.dsp.focus({ monitor = MONITOR3 }))
