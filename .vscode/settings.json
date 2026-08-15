@@ -1,0 +1,11 @@
+{
+    "Lua.workspace.library": [
+        "/usr/share/hypr/stubs"
+    ],
+    "Lua.runtime.version": "Lua 5.4",
+    "Lua.workspace.checkThirdParty": false,
+    "Lua.diagnostics.disable": [
+        "lowercase-global"
+    ],
+    "Lua.hint.enable": true
+}
