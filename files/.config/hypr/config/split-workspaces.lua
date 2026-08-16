@@ -24,3 +24,4 @@ hl.bind(mainMod .. " + SHIFT + G", smw.grab_rogue_windows())
 hl.bind(mainMod .. " + CTRL + 1", hl.dsp.focus({ monitor = PRIMARY_MONITOR }))
 hl.bind(mainMod .. " + CTRL + 2", hl.dsp.focus({ monitor = MONITOR2 }))
 hl.bind(mainMod .. " + CTRL + 3", hl.dsp.focus({ monitor = MONITOR3 }))
+
