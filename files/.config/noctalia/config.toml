@@ -212,6 +212,8 @@ color = "error"
 [widget.spacer_1]
 type = "spacer"
 
+[widget.temp]
+
 [widget.sysmon_2]
 visualization = "text"
 glyph = "gpu-usage"
@@ -241,7 +243,6 @@ active_pill_size = 2.0
 capsule = true
 capsule_fill = "on_primary"
 show_labels = false
-hide_when_empty = true
 inactive_pill_size = 1.0
 pill_scale = 0.80000000000000004
 urgent_color = "#FB9507"
