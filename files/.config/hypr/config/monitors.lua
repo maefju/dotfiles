@@ -17,7 +17,7 @@ hl.monitor({
 
 -- Secondary monitor
 hl.monitor({
-    output = "DP-2",
+    output = "HDMI-A-1",
     mode = "preferred",
     position = "auto-right",
     scale = 1,

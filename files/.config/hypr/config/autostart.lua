@@ -6,3 +6,11 @@
 --     hl.exec_cmd("noctalia")
 --     hl.exec_cmd("xhost +SI:localuser:root")
 -- end)
+
+
+hl.on("hyprland.start", function()
+    -- if we get screensharing issues:
+    -- hl.exec_cmd("~/.config/hypr/scripts/xdg.sh")
+
+    hl.exec_cmd("kanshi -c ~/.config/kanshi/config")
+end)
