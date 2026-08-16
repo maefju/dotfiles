@@ -4,7 +4,7 @@ set -euo pipefail
 # Repoint symlinks in ~/.config that target ~/.mydotfiles/files/.config
 # so they instead target ~/.dotfiles/files/.config.
 
-old_prefix="$HOME/.mydotfiles/files/.config"
+old_prefix="$HOME/.mydotfiles/com.ml4w.dotfiles.stable/.config"
 new_prefix="$HOME/.dotfiles/files/.config"
 config_dir="$HOME/.config"
 
