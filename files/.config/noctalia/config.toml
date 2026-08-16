@@ -212,8 +212,6 @@ color = "error"
 [widget.spacer_1]
 type = "spacer"
 
-[widget.temp]
-
 [widget.sysmon_2]
 visualization = "text"
 glyph = "gpu-usage"
