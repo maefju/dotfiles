@@ -213,7 +213,7 @@ color = "error"
 type = "spacer"
 
 [widget.sysmon_2]
-display = "text"
+visualization = "text"
 glyph = "gpu-usage"
 stat = "gpu_temp"
 type = "sysmon"
@@ -225,7 +225,6 @@ type = "sysmon"
 
 [widget.temp]
 display = "text"
-show_label = false
 
 [widget.tray]
 capsule = true
@@ -241,7 +240,7 @@ type = "alexander/screen-toolkit:widget"
 active_pill_size = 2.0
 capsule = true
 capsule_fill = "on_primary"
-display = "none"
+show_labels = false
 hide_when_empty = true
 inactive_pill_size = 1.0
 pill_scale = 0.80000000000000004
