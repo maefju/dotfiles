@@ -8,9 +8,9 @@
 -- end)
 
 
-hl.on("hyprland.start", function()
-    -- if we get screensharing issues:
-    -- hl.exec_cmd("~/.config/hypr/scripts/xdg.sh")
+-- hl.on("hyprland.start", function()
+--     -- if we get screensharing issues:
+--     -- hl.exec_cmd("~/.config/hypr/scripts/xdg.sh")
 
-    hl.exec_cmd("kanshi -c ~/.config/kanshi/config")
-end)
+--     hl.exec_cmd("kanshi -c ~/.config/kanshi/config")
+-- end)
