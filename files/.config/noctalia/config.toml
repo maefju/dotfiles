@@ -1,19 +1,22 @@
 [accessibility]
-ui_scale = 1.20
+ui_scale = 1.0000000074505806
 
 [bar.default]
-center = [ "workspaces", "spacer_1", "active_window" ]
+background_opacity = 0.64999998547136784
+center = [ "workspaces" ]
 concave_edge_corners = true
-end = [ "media", "spacer_1", "tray", "notifications", "network", "volume", "session" ]
+contact_shadow = true
+end = [ "media", "spacer_1", "widget", "wallpaper", "group:g1", "notifications", "network", "volume", "session" ]
 margin_edge = 0
 margin_ends = 0
-radius_bottom_left = 12
-radius_bottom_right = 12
+radius_bottom_left = 0
+radius_bottom_right = 0
 radius_top_left = 0
 radius_top_right = 0
-scale = 1.10
-start = [ "launcher", "clock", "spacer_1", "group:g1" ]
+scale = 1.1000000000000001
+start = [ "launcher", "clock", "spacer_1", "tray" ]
 thickness = 35
+widget_spacing = 10
 
     [[bar.default.capsule_group]]
     border = ""
@@ -23,6 +26,79 @@ thickness = 35
     opacity = 1.0
     padding = 6.0
 
+[control_center.calendar]
+show_week_numbers = true
+
+[location]
+address = "Ludwigshafen am Rhein"
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@DP-2", "lockscreen-login-box@DP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 1152.0
+    cy = 1114.0
+    output = "DP-1"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@DP-2"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 960.0
+    cy = 898.0
+    output = "DP-2"
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@DP-2".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[plugin_settings."alexander/screen-toolkit"]
+hide-cursor = false
+selected-ocr-lang = "eng+deu"
+
+[plugins]
+enabled = [ "noctalia/wallhaven", "alexander/screen-toolkit" ]
+
 [shell]
 clipboard_image_action_command = "satty -f -"
 launch_apps_as_systemd_services = true
@@ -31,11 +107,15 @@ settings_show_advanced = true
 
     [shell.greeter_sync]
     auto_sync = true
+    privilege_command = "pkexec"
 
     [shell.panel]
     open_near_click_control_center = true
     session_placement = "floating"
     session_position = "center"
+
+    [shell.screen_corners]
+    size = 97
 
     [shell.screenshot]
     copy_to_clipboard = false
@@ -82,16 +162,36 @@ settings_show_advanced = true
 gpu_poll_seconds = 2
 
 [theme]
+builtin = "Noctalia"
+community_palette = "Oxocarbon"
 mode = "dark"
 source = "wallpaper"
-wallpaper_scheme = "m3-tonal-spot"
+wallpaper_scheme = "muted"
 
     [theme.templates]
-    builtin_ids = [ "btop", "gtk3", "gtk4", "kcolorscheme", "kitty", "qt", "alacritty" ]
+    builtin_ids = [ "alacritty", "btop", "gtk3", "gtk4", "hyprland", "kcolorscheme", "kitty", "qt" ]
+
+[wallpaper.automation]
+enabled = true
+
+[wallpaper.default]
+path = "/home/maefju/Pictures/Wallpapers/wallhaven-6lpzx7.jpg"
+
+[wallpaper.last]
+path = "/home/maefju/Pictures/Wallpapers/wallhaven-6lpzx7.jpg"
+
+[wallpaper.monitors.DP-1]
+path = "/home/maefju/Pictures/Wallpapers/wallhaven-6lpzx7.jpg"
+
+[wallpaper.monitors.DP-2]
+path = "/home/maefju/Pictures/Wallpapers/wallhaven-6lpzx7.jpg"
+
+[widget.active_window]
+enabled = false
 
 [widget.clock]
 color = "secondary"
-format = "{:%H:%M %A %m/%d/%y}"
+format = "{:%H:%M %A %d.%m.%y}"
 
 [widget.launcher]
 color = "secondary"
@@ -112,9 +212,8 @@ color = "error"
 [widget.spacer_1]
 type = "spacer"
 
-[widget.temp]
-
 [widget.sysmon_2]
+display = "text"
 glyph = "gpu-usage"
 stat = "gpu_temp"
 type = "sysmon"
@@ -124,6 +223,10 @@ glyph = "cpu-2"
 stat = "ram_used"
 type = "sysmon"
 
+[widget.temp]
+display = "text"
+show_label = false
+
 [widget.tray]
 capsule = true
 capsule_fill = "on_secondary"
@@ -131,10 +234,15 @@ capsule_fill = "on_secondary"
 [widget.volume]
 color = "secondary"
 
+[widget.widget]
+type = "alexander/screen-toolkit:widget"
+
 [widget.workspaces]
-active_pill_size = 2.5
+active_pill_size = 2.0
 capsule = true
 capsule_fill = "on_primary"
-show_labels = false
+display = "none"
+hide_when_empty = true
 inactive_pill_size = 1.0
-pill_scale = 0.80
+pill_scale = 0.80000000000000004
+urgent_color = "#FB9507"
