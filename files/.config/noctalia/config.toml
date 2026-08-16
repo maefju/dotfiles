@@ -213,8 +213,9 @@ color = "error"
 type = "spacer"
 
 [widget.sysmon_2]
-visualization = "text"
-glyph = "gpu-usage"
+show_value = true
+show_glyph = true
+visualization = "graph"
 stat = "gpu_temp"
 type = "sysmon"
 
