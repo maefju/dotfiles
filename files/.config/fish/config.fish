@@ -8,3 +8,5 @@ end
 
 
 zoxide init fish --cmd cd | source
+
+alias dr="$HOME/dev/docker-restart.sh"

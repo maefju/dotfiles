@@ -22,3 +22,11 @@ hl.monitor({
     position = "auto-right",
     scale = 1,
 })
+
+-- internal monitor
+hl.monitor({
+    output = "eDP-1",
+    mode = "preferred",
+    position = "auto-right",
+    scale = 1,
+})

@@ -9,7 +9,7 @@ CALCULATOR      = "gnome-calculator"
 -- Monitors
 MONITOR1        = "DP-1"
 MONITOR2        = "HDMI-A-1"
-MONITOR3        = ""
+MONITOR3        = "eDP-1"
 PRIMARY_MONITOR = MONITOR1
 
 -- Workspaces

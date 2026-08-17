@@ -4,7 +4,7 @@ local smw = require("plugins.split-monitor-workspaces")
 
 smw.setup({
     workspace_count = 5, -- This will create 5 persistent workspaces on each monitor at startup
-    monitor_priority = { PRIMARY_MONITOR, MONITOR2 },
+    monitor_priority = { PRIMARY_MONITOR, MONITOR2, MONITOR3 }, -- This is the order in which the monitors will be checked for workspaces. The first monitor in this list will be the one that gets the first workspace, and so on.
     keep_focused = true, -- Keep the currently focused workspace when the config is reloaded
 })
 
