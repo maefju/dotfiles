@@ -1,3 +1,5 @@
 {
-  "disableGpu": false
+  "performance": {
+    "disableGpu": false
+  }
 }

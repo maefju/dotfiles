@@ -1,0 +1,4 @@
+[submodule "files/.config/hypr/plugins/split-monitor-workspaces"]
+	path = files/.config/hypr/plugins/split-monitor-workspaces
+	url = https://github.com/zjeffer/split-monitor-workspaces
+	branch = release/0.57.x

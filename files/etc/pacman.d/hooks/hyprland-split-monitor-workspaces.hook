@@ -1,0 +1,19 @@
+# Install with:
+#   sudo install -Dm644 ~/.dotfiles/files/etc/pacman.d/hooks/hyprland-split-monitor-workspaces.hook \
+#       /etc/pacman.d/hooks/hyprland-split-monitor-workspaces.hook
+#
+# runuser drops to the user before the script runs, so pacman (root) never
+# executes the user-writable script itself.
+
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = hyprland
+Target = hyprland-git
+
+[Action]
+Description = Matching split-monitor-workspaces to the new Hyprland version...
+When = PostTransaction
+Depends = git
+Exec = /usr/bin/runuser -u matthias -- /home/matthias/.dotfiles/files/.config/hypr/scripts/update-split-monitor-workspaces.sh

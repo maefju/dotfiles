@@ -16,11 +16,25 @@ hl.config({
             natural_scroll = true,
         },
     },
-    cursor = {
-        no_hardware_cursors = true,
-        use_cpu_buffer = 2
-    }
 })
+
+-- Software cursor workaround, only on this laptop (Intel/NVIDIA hybrid)
+local function hostname()
+    local f = io.open("/etc/hostname")
+    if not f then return nil end
+    local h = f:read("l")
+    f:close()
+    return h
+end
+
+if hostname() == "matthias-sot" then
+    hl.config({
+        cursor = {
+            no_hardware_cursors = true,
+            use_cpu_buffer = 2,
+        },
+    })
+end
 
 hl.gesture({ fingers = 4, direction = "horizontal", action = "workspace" })
 hl.gesture({ fingers = 3, direction = "down", action = "close" })

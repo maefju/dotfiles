@@ -30,3 +30,11 @@ hl.monitor({
     position = "auto-right",
     scale = 1,
 })
+
+-- Fallback for any other output (projectors, meeting-room screens, ...)
+hl.monitor({
+    output = "",
+    mode = "preferred",
+    position = "auto",
+    scale = 1,
+})

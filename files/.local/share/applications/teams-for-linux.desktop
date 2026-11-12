@@ -9,4 +9,4 @@ MimeType=x-scheme-handler/msteams;
 Categories=Network;Chat;InstantMessaging;Application;
 Terminal=false
 StartupNotify=true
-Version=0.1.9
+Version=1.5

@@ -1,7 +1,15 @@
 export BROWSER=chromium
 export TERM=xterm-kitty
+
+# Qt-Plattformen definieren (Wayland erzwingen, xcb nur als Notfall)
 export QT_QPA_PLATFORM="wayland;xcb"
+
+# Das Theme-Plugin für ein einheitliches Design auf CachyOS
 export QT_QPA_PLATFORMTHEME="qt6ct"
+
+# LibreOffice explizit anweisen, das Qt6-Wayland-Plugin zu nutzen
+export SAL_USE_VCLPLUGIN="qt6"
+
 export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export HYPRCURSOR_THEME="Bibata-Modern-Ice"
 export HYPRCURSOR_SIZE=24
@@ -22,3 +30,4 @@ export __GL_GSYNC_ALLOWED=1 # Controls if G-Sync capable monitors should use Var
 export GDK_BACKEND=wayland,x11,*
 export CLUTTER_BACKEND=wayland
 export SDL_VIDEODRIVER=wayland
+

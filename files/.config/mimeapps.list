@@ -1,7 +1,13 @@
-[Added Associations]
-
 [Default Applications]
-inode/directory=org.kde.dolphin.desktop;
+x-scheme-handler/mailto=chromium.desktop
+text/plain=micro.desktop
+application/json=micro.desktop
+x-scheme-handler/msteams=teams-for-linux.desktop
+x-scheme-handler/web+msteams=teams-for-linux.desktop
+x-scheme-handler/claude-cli=claude-code-url-handler.desktop
+
+[Added Associations]
 text/plain=micro.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=firefox.desktop;
+application/json=micro.desktop;
+x-scheme-handler/msteams=teams-for-linux.desktop;
+x-scheme-handler/web+msteams=teams-for-linux.desktop;

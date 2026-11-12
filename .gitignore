@@ -7,7 +7,11 @@ Thumbs.db
 *.swo
 *~
 .idea/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 
 # Hyprland .conf -> .lua conversion staging artifacts
 *.lua.hyprland-config-converting
+
+# Machine-local fish state
+files/.config/fish/fish_variables
