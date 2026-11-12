@@ -1,15 +1,44 @@
-export BROWSER=firefox
 export TERM=xterm-kitty
+
+# Qt-Plattformen definieren (Wayland erzwingen, xcb nur als Notfall)
 export QT_QPA_PLATFORM="wayland;xcb"
+
+# Das Theme-Plugin für ein einheitliches Design auf CachyOS
 export QT_QPA_PLATFORMTHEME="qt6ct"
-export ELECTRON_OZONE_PLATFORM_HINT=auto
+
+# LibreOffice explizit anweisen, das Qt6-Wayland-Plugin zu nutzen
+export SAL_USE_VCLPLUGIN="qt6"
+
+export ELECTRON_OZONE_PLATFORM_HINT=wayland
 export HYPRCURSOR_THEME="Bibata-Modern-Ice"
 export HYPRCURSOR_SIZE=24
 export XCURSOR_THEME="Bibata-Modern-Ice"
 export XCURSOR_SIZE=24
 
-# If you have an NVIDIA GPU uncommment the following lines
-export GBM_BACKEND=nvidia-drm # force GBM as a backend
-export __GLX_VENDOR_LIBRARY_NAME=nvidia # force GBM as a backend
-export LIBVA_DRIVER_NAME=nvidia # Hardware acceleration on NVIDIA GPUs
 export __GL_GSYNC_ALLOWED=1 # Controls if G-Sync capable monitors should use Variable Refresh Rate (VRR)
+export GDK_BACKEND=wayland,x11,*
+export CLUTTER_BACKEND=wayland
+
+# ---- Per-machine settings (keep in sync with ~/.config/hypr/config/hosts/) ----
+case "$(cat /etc/hostname 2>/dev/null)" in
+	maefju-cachyos) # Gaming PC (NVIDIA only)
+		export BROWSER=firefox
+		export GBM_BACKEND=nvidia-drm
+		export __GLX_VENDOR_LIBRARY_NAME=nvidia
+		export LIBVA_DRIVER_NAME=nvidia
+		;;
+	matthias-sot) # Work laptop (Intel + NVIDIA hybrid)
+		# Don't force the NVIDIA GBM backend here: with the Intel iGPU driving the
+		# display it breaks EGLImage/dmabuf sharing in Chromium/Ozone (scroll lag).
+		export BROWSER=chromium
+		export SDL_VIDEODRIVER=wayland
+		;;
+	*) # Unknown machine: only force NVIDIA on pure-NVIDIA systems
+		export BROWSER=chromium
+		if [ -d /sys/module/nvidia ] && [ ! -d /sys/module/i915 ] && [ ! -d /sys/module/amdgpu ]; then
+			export GBM_BACKEND=nvidia-drm
+			export __GLX_VENDOR_LIBRARY_NAME=nvidia
+			export LIBVA_DRIVER_NAME=nvidia
+		fi
+		;;
+esac

@@ -2,13 +2,13 @@
 
 TERMINAL        = "kitty"
 FILE_MANAGER    = "nautilus"
-BROWSER         = "firefox"
+BROWSER         = "chromium"
 EDITOR          = "gnome-text-editor --new-window"
 CALCULATOR      = "gnome-calculator"
 
--- Monitors
+-- Monitors (defaults; config/hosts/<hostname>.lua overrides these per machine)
 MONITOR1        = "DP-1"
-MONITOR2        = "DP-2"
+MONITOR2        = ""
 MONITOR3        = ""
 PRIMARY_MONITOR = MONITOR1
 

@@ -2,6 +2,7 @@
 Name=Easy Effects
 Comment=Easy Effects Service
 Exec=easyeffects --hide-window --service-mode
+TryExec=easyeffects
 Icon=com.github.wwmm.easyeffects
 StartupNotify=false
 Terminal=false
