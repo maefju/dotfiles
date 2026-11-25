@@ -10,3 +10,6 @@ end
 zoxide init fish --cmd cd | source
 
 alias dr="$HOME/dev/docker-restart.sh"
+
+# SOT worktree helpers (create-wt / open-wt / rm-wt / list-wt)
+test -f ~/dev/sot-worktree.fish; and source ~/dev/sot-worktree.fish
